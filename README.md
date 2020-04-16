@@ -1,20 +1,44 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+This repo contains the code for the paper [Conservative Uncertainty Estimation By Fitting Prior Networks](https://openreview.net/forum?id=BJlahxHYDS).
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+The code requires `Python >= 3.6` and a GPU with `CUDA` and `CuDNN` installed.
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+To install the reqirements, run
+```
+pip intall -r requirements.txt
+```
+from the root directory.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+All the scripts are in `src/scripts` and the different uncertainty models are in `src/scripts/models`.
+The CIFAR-10 experiments from the paper can be reproduced by running
+```
+./reproduce_cifar_experiment.sh
+```
+from the `src/scripts` directory.
+This should take about 16 hours on a single GPU and will produce three figures in the `figures` directory that should look like this:
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+![Calibration curves](figures/example_figures/cifar10_accuracy_curves.png)
+
+![Distributions](figures/example_figures/cifar10_distributions.png)
+
+![Uncertainties](figures/example_figures/cifar10_uncertainties_all.png)
+
+The different models can be trained using the training script in `src/scripts/train_uncertainties.py`.
+The command line options can be shown by running
+```
+python train_uncertainties.py --help
+```
+
+The neural network architectures used in this implementation are adapted from [David Page](https://github.com/davidcpage/cifar10-fast) and the dropout baseline is adapted from [Yarin Gal](https://github.com/davidcpage/cifar10-fast).
+
+If you want to cite this work, please use
+
+```
+@inproceedings{
+Ciosek2020Conservative,
+title={Conservative Uncertainty Estimation By Fitting Prior Networks},
+author={Kamil Ciosek and Vincent Fortuin and Ryota Tomioka and Katja Hofmann and Richard Turner},
+booktitle={International Conference on Learning Representations},
+year={2020},
+url={https://openreview.net/forum?id=BJlahxHYDS}
+}
+```

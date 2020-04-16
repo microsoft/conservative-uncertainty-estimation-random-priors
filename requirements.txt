@@ -1,0 +1,15 @@
+mkl
+numpy
+scipy
+pandas
+sklearn
+tqdm
+pydot
+PyQt5
+graphviz
+matplotlib
+seaborn
+jupyterlab
+tensorflow-gpu
+torch
+torchvision
