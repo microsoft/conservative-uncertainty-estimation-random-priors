@@ -4,7 +4,7 @@ The code requires `Python >= 3.6` and a GPU with `CUDA` and `CuDNN` installed.
 
 To install the reqirements, run
 ```
-pip intall -r requirements.txt
+pip install -r requirements.txt
 ```
 from the root directory.
 
